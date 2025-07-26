@@ -5,7 +5,11 @@ import React, { useEffect, useState } from "react";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { LuNetwork } from "react-icons/lu";
 
-const Nav = () => {
+type props = {
+  openNav: () => void;
+};
+
+const Nav = ({ openNav }: props) => {
   const [navBg, setNavBg] = useState(false);
 
   useEffect(() => {
@@ -24,7 +28,7 @@ const Nav = () => {
     >
       <div className="flex items-center h-full justify-between w-[92%] mx-auto">
         <div className="flex items-center sm:space-x-20">
-          <div className="flex place-items-center-space-x-2">
+          <div className="flex place-items-center space-x-2">
             <div className="w-10 h-10 bg-cyan-800 rounded-full flex items-center justify-center flex-col">
               <LuNetwork className="w-5 h-5 text-white" />
             </div>
@@ -54,7 +58,11 @@ const Nav = () => {
           <button className="px-8 py-2.5 text-sm hidden sm:block cursor-pointer rounded-lg bg-cyan-700 hover:bg-cyan-900 transition-all duration-300 text-white">
             Job Post
           </button>
-          <HiBars3BottomRight className="w-8 h-8 cursor-pointer text-black lg:hidden" />
+
+          <HiBars3BottomRight
+            onClick={openNav}
+            className="w-8 h-8 cursor-pointer text-black lg:hidden"
+          />
         </div>
       </div>
     </div>
